@@ -1,0 +1,15 @@
+Reaction_game/Debug/
+Reaction_game/Release/
+Reaction_game/**/*.o
+Reaction_game/**/*.d
+Reaction_game/**/*.elf
+Reaction_game/**/*.map
+Reaction_game/**/*.su
+*.o
+*.d
+*.elf
+*.map
+*.su
+.metadata/
+*.pdsbak
+Reaction_Game.pdsprj.OPREKIN-PC.PHUOC_NHM.workspace
