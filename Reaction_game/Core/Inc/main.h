@@ -30,8 +30,9 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 
 /* Private includes ----------------------------------------------------------*/
+#include "global.h"
 #include "button.h"
-#include <game_fsm.h>
+#include "game_fsm.h"
 #include "LED_manager.h"
 #include "scheduler.h"
 #include "watchdog.h"

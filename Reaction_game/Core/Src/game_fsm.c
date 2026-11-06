@@ -11,7 +11,7 @@ uint16_t getRandomTime(){
 	return randomTime;
 }
 void setRandomTime(){
-	randomTime = (rand() % 3 + 1) * 1000;
+	randomTime = (rand() % 4 + 1) * 1000;
 }
 
 void gameFSMInit(){
@@ -19,6 +19,12 @@ void gameFSMInit(){
 	setIsWin(0);
 	setIsLose(0);
 	setIsStartingEarly(0);
+	setWinLed(LED_OFF);
+	setLoseLed(LED_OFF);
+	setStartEarlyLed(LED_OFF);
+	for(int i=0;i<5;i++){
+		setLed(i, LED_OFF);
+	}
 	srand(__HAL_TIM_GET_COUNTER(&htim2));
 }
 
@@ -57,26 +63,30 @@ void gameFSMRun(){
 			else setLoseLed(LED_OFF);
 			if (getIsStartingEarly() == 1) setStartEarlyLed(LED_ON);
 			else setStartEarlyLed(LED_OFF);
-			if (isButtonPressed(0)){
+			if (isButtonPressed(0) == 1){
 				setIsWin(0);
 				setIsLose(0);
 				setIsStartingEarly(0);
 				for(int i=0;i<5;i++){
-					setLed(i, LED_OFF);
+					setLed(i, LED_ON);
 				}
 				setWinLed(LED_OFF);
 				setLoseLed(LED_OFF);
 				setStartEarlyLed(LED_OFF);
-				setState(STATE_COUNTDOWN);
+				setRandomTime();
+				setState(STATE_WAIT);
 			}
 			break;
 		case STATE_COUNTDOWN:
 			break;
 		case STATE_WAIT:
-			if (isButtonPressed(0)){
+			if (isButtonPressed(0) == 1){
 				setIsWin(0);
 				setIsLose(0);
 				setIsStartingEarly(1);
+				for(int i=0;i<5;i++){
+					setLed(i, LED_OFF);
+				}
 				setState(STATE_IDLE);
 				break;
 			}
@@ -89,7 +99,7 @@ void gameFSMRun(){
 			}
 			break;
 		case STATE_PLAY:
-			if (isButtonPressed(0)){
+			if (isButtonPressed(0) == 1){
 				setIsWin(1);
 				setIsLose(0);
 				setIsStartingEarly(0);

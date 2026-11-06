@@ -56,7 +56,6 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
 /* USER CODE END 0 */
 
 /**
@@ -99,8 +98,9 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  SCH_DispatchTasks();
+
     /* USER CODE BEGIN 3 */
+	  SCH_DispatchTasks();
   }
   /* USER CODE END 3 */
 }
@@ -190,7 +190,7 @@ static void MX_TIM2_Init(void)
   htim2.Instance = TIM2;
   htim2.Init.Prescaler = 7999;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 65535;
+  htim2.Init.Period = 9;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
@@ -269,9 +269,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 void mainInit(){
 	SCH_Init();
 	watchDogInit();
+	gameFSMInit();
 }
 void mainTask(){
 	SCH_AddTask(watchDogRefresh,10,100);
+	SCH_AddTask(gameFSMRun,0,10);
+	SCH_AddTask(getKeyInput,0,10);
 }
 /* USER CODE END 4 */
 

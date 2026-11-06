@@ -3,8 +3,8 @@
 
 #include "global.h"
 
-#define LED_ON GPIO_PIN_SET
-#define LED_OFF GPIO_PIN_RESET
+#define LED_ON GPIO_PIN_RESET
+#define LED_OFF GPIO_PIN_SET
 
 typedef struct{
 	GPIO_TypeDef *port;
