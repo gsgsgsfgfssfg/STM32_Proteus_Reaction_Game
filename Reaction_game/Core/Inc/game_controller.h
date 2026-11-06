@@ -1,6 +1,0 @@
-#ifndef INC_GAME_CONTROLLER_H_
-#define INC_GAME_CONTROLLER_H_
-
-
-
-#endif /* INC_GAME_CONTROLLER_H_ */

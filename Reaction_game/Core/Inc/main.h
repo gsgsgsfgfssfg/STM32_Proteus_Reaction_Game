@@ -31,7 +31,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 #include "button.h"
-#include "game_controller.h"
+#include <game_fsm.h>
 #include "LED_manager.h"
 #include "scheduler.h"
 #include "watchdog.h"
