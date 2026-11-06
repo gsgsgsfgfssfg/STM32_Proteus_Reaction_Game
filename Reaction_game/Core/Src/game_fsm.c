@@ -68,16 +68,26 @@ void gameFSMRun(){
 				setIsLose(0);
 				setIsStartingEarly(0);
 				for(int i=0;i<5;i++){
-					setLed(i, LED_ON);
+					setLed(i, LED_OFF);
 				}
 				setWinLed(LED_OFF);
 				setLoseLed(LED_OFF);
 				setStartEarlyLed(LED_OFF);
-				setRandomTime();
-				setState(STATE_WAIT);
+				setStartTick();
+				setState(STATE_COUNTDOWN);
 			}
 			break;
 		case STATE_COUNTDOWN:
+			if (currentTick - getStartTick() >= 500) setLed(0, LED_ON);
+			if (currentTick - getStartTick() >= 1000) setLed(1, LED_ON);
+			if (currentTick - getStartTick() >= 1500) setLed(2, LED_ON);
+			if (currentTick - getStartTick() >= 2000) setLed(3, LED_ON);
+			if (currentTick - getStartTick() >= 2500) {
+				setLed(4, LED_ON);
+				setRandomTime();
+				setStartTick();
+				setState(STATE_WAIT);
+			}
 			break;
 		case STATE_WAIT:
 			if (isButtonPressed(0) == 1){
