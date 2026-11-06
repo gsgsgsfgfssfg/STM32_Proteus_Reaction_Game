@@ -6,6 +6,7 @@
 
 extern TIM_HandleTypeDef htim2;
 extern int TIME_CYCLES;
+uint32_t SCH_tick;
 
 typedef struct{
 	void (*pTask)(void);
@@ -21,6 +22,7 @@ sTask SCH_tasks_G[SCH_MAX_TASKS];
 
 uint32_t getNewTaskID();
 void SCH_Init();
+uint32_t SCH_GetTick();
 unsigned char SCH_Insert(void (*pFunction)(), unsigned int DELAY, unsigned int PERIOD, unsigned int TASKID);
 unsigned char SCH_AddTask(void (*pFunction)(), unsigned int DELAY, unsigned int PERIOD);
 void SCH_DispatchTasks();

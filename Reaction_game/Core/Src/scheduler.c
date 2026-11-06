@@ -11,6 +11,7 @@ uint32_t getNewTaskID(){
 }
 void SCH_Init(){
 	HAL_TIM_Base_Start_IT(&htim2);
+	SCH_tick = 0;
 	TIME_CYCLES = ((htim2.Init.Prescaler + 1) * (htim2.Init.Period+1) * 1000)/HAL_RCC_GetHCLKFreq();
 	for(unsigned char i=0;i<SCH_MAX_TASKS;i++){
 		SCH_tasks_G[i].pTask = NULL;
@@ -19,6 +20,10 @@ void SCH_Init(){
 		SCH_tasks_G[i].RunMe = 0;
 	}
 	SCH_count = 0;
+}
+
+uint32_t SCH_GetTick(){
+	return SCH_tick;
 }
 
 unsigned char SCH_Insert(void (*pFunction)(), unsigned int DELAY, unsigned int PERIOD, unsigned int TASKID){
@@ -85,6 +90,7 @@ void SCH_Update(){
 	if (SCH_count == 0) return;
 	if (SCH_tasks_G[0].Delay > 0) SCH_tasks_G[0].Delay --;
 	if (SCH_tasks_G[0].Delay <= 0) SCH_tasks_G[0].RunMe = 1;
+	SCH_tick += TIME_CYCLES;
 }
 
 unsigned char SCH_DeleteTask(const uint32_t TASK_ID){
