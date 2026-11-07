@@ -36,6 +36,7 @@ extern "C" {
 #include "LED_manager.h"
 #include "scheduler.h"
 #include "watchdog.h"
+#include "led_blinking.h"
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */

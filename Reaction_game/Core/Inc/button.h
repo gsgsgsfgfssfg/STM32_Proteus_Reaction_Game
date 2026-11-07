@@ -11,8 +11,8 @@ typedef struct{
 	GPIO_TypeDef *port;
 	uint16_t pin;
 	uint8_t flag;
-	uint8_t last_read;
-	uint8_t last_read_stable;
+	GPIO_PinState last_read;
+	GPIO_PinState last_read_stable;
 	uint8_t tick;
 } button_Typedef;
 extern button_Typedef btn[1];

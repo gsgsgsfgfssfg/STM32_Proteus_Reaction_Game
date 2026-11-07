@@ -64,6 +64,7 @@ void gameFSMRun(){
 			if (getIsStartingEarly() == 1) setStartEarlyLed(LED_ON);
 			else setStartEarlyLed(LED_OFF);
 			if (isButtonPressed(0) == 1){
+				blinkStart();
 				setIsWin(0);
 				setIsLose(0);
 				setIsStartingEarly(0);
@@ -91,6 +92,7 @@ void gameFSMRun(){
 			break;
 		case STATE_WAIT:
 			if (isButtonPressed(0) == 1){
+				blinkStart();
 				setIsWin(0);
 				setIsLose(0);
 				setIsStartingEarly(1);
@@ -110,6 +112,7 @@ void gameFSMRun(){
 			break;
 		case STATE_PLAY:
 			if (isButtonPressed(0) == 1){
+				blinkStart();
 				setIsWin(1);
 				setIsLose(0);
 				setIsStartingEarly(0);

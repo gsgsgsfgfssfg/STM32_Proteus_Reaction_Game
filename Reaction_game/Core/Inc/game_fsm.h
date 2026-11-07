@@ -5,6 +5,7 @@
 #include "scheduler.h"
 #include "button.h"
 #include "LED_manager.h"
+#include "led_blinking.h"
 #include <stdlib.h>
 #include <time.h>
 

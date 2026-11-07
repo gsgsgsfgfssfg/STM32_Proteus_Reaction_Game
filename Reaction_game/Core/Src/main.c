@@ -275,6 +275,7 @@ void mainTask(){
 	SCH_AddTask(watchDogRefresh,10,100);
 	SCH_AddTask(gameFSMRun,0,10);
 	SCH_AddTask(getKeyInput,0,10);
+	SCH_AddTask(blinkRun,0,10);
 }
 /* USER CODE END 4 */
 
