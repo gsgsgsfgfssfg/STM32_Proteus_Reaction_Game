@@ -270,6 +270,7 @@ void mainInit(){
 	SCH_Init();
 	watchDogInit();
 	gameFSMInit();
+	writeLED(GPIO_PIN_SET);
 }
 void mainTask(){
 	SCH_AddTask(watchDogRefresh,10,100);

@@ -30,15 +30,13 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 
 /* Private includes ----------------------------------------------------------*/
-#include "global.h"
+/* USER CODE BEGIN Includes */
 #include "button.h"
+#include "global.h"
 #include "game_fsm.h"
-#include "LED_manager.h"
+#include "led_blinking.h"
 #include "scheduler.h"
 #include "watchdog.h"
-#include "led_blinking.h"
-/* USER CODE BEGIN Includes */
-
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -65,7 +63,6 @@ void mainTask();
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
